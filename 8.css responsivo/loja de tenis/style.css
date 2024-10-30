@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1%;
+}
+header{
+    padding: 16px 0 0;
+    /* border-bottom: 1px solid #ccc; Com isso eu crio uma linha. Importante lá na frente */
+    background-color: #000000c8;
+    color: white;
+}
+.conteudo-header {
+    list-style: none;
+    display: flex;
+}
+
+.conteudo-header li{
+    margin-left: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+.conteudo-header li:hover{
+    color: #9500da;
+}
+.sobre img{
+    margin-right: 10px;
+}
+
+.sobre_a_loja{
+    margin-top: 30px;
+}
+.milagre{
+    border-top: 1px solid #000000c8;
+    color: black;
+}
+.sobre a{
+    display: flex;
+    font-size: 1.5em;
+}
+.sobre_a_loja h2{
+    margin-bottom: 15px;
+}
+.sobre a{
+    text-decoration: none;
+}
+.produtos{
+    display: grid;
+    grid-template-columns: repeat(4, 0.2fr);
+    column-gap: 1%;
+    row-gap: 5%;
+}
+.seção_produtos h2 {
+    margin: 30px 0px 15px 0px ;
+}
+.produto a{
+    text-decoration: none;
+    color: black;
+}
+.produto .ajuste .p-produto{
+    font-size: 13px;
+}
+.produtos{
+    border-top: 1px solid #000000c8;
+    padding-top: 15px;
+    max-width: 100;
+}
+.btn{
+    background-color: #000000c8;
+    color: #fff;
+    border-radius: 3px;
+    padding: 4px;
+    font-style: italic;
+    margin-top: 5px;
+}
+.produtos{
+    justify-content: center; 
+    text-align: center; 
+}
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+    header {
+    font-size: 14px;
+    }
+    header li{
+        margin-right: 15px;
+    }
+    .sobre_a_loja img{
+        text-align: center;
+    }
+    .sobre_a_loja .sobre a {
+        display: block;
+        font-size: 20px;
+        max-width: 100%;
+    }
+    .sobre {
+        display: flex;
+        justify-content: center; 
+        flex-direction: column; 
+        text-align: center; 
+    }
+    .conteudo{
+        display: grid;
+    }
+    .container h1{
+        margin-left: 5%;
+    }
+    .conteudo h2{
+        text-align: left;
+    }
+    .produtos{
+        display: grid;
+        grid-template-columns: repeat(2, 0.2fr);
+        column-gap: 1%;
+        row-gap: 5%;
+        justify-content: center; 
+        flex-direction: column; 
+        text-align: center;
+    }
+    
+}
+@media screen and (max-width:640px) {
+    header {
+        font-size: 11px;
+        }
+        header li{
+            margin-right: 15px;
+        }
+        .sobre_a_loja img{
+            margin-bottom: 30px;
+        }
+        .sobre_a_loja .sobre a {
+            display: block;
+            font-size: 15px;
+            max-width: 100%;
+        }
+        .sobre {
+            display: flex;
+            justify-content: center; 
+            flex-direction: column; 
+            text-align: center; 
+        }
+        .produtos{
+            display: grid;
+            grid-template-columns: repeat(1, 0fr);
+            column-gap: 1%;
+            row-gap: 5%;
+            justify-content: center; 
+            flex-direction: column; 
+            text-align: center;
+        }
+        .container h1{
+            margin-left: 5%;
+        }
+        .conteudo h2{
+            text-align: left;
+        }
+        
+}

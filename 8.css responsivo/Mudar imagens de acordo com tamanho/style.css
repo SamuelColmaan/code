@@ -1,0 +1,8 @@
+div{
+    background-image: url("https://cdn.pixabay.com/photo/2024/09/02/13/08/kingfisher-9016787_1280.jpg");
+    height: 500px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-color: red;
+    background-size: cover;
+}

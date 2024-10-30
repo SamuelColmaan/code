@@ -1,0 +1,78 @@
+/* 1) screen - telas em geral
+2) print - aplica apenas caso alguém vá imprimir 
+3) speech aplica para leitor de tela, reconhecimento por voz da página
+4) all - atinge todos os outros 
+5) mobile first - o design é feito primeiro para mobile */
+/* 6) and - Trabalha com intervalos */
+/* 7) orientation (landscape) = horizontal x portrait (vertical) - trabalho com a orientação do dispositivo */
+/* 8) or - se atender a um requisito já funciona */
+ 
+ 
+ /* Ele define uma mídia query que aplicaria um fundo vermelho ao corpo da página quando a largura da tela fosse 664 pixels ou menos. 
+
+    @media screen and (max-width: 664px) {
+        body{
+            background-color: red;
+        }
+    }  */
+
+
+/* Mídia query que aplica o fundo vermelho ao corpo da página quando a orientação do dispositivo for retrato (portrait) e a largura da tela for de 640 pixels ou menos. Isso significa que em dispositivos móveis com telas pequenas, que estão sendo segurados na vertical, o fundo ficará vermelho. */
+ /* @media screen and (orientation: portrait) and (max-width: 640px) {
+    body{
+        background-color: red;
+    }
+ } */
+
+/* Mídia query específica para impressão. Quando o usuário tentar imprimir a página, os títulos `<h3>` serão exibidos em vermelho na impressão. */
+/* 2 - print */
+@media print {
+    h1 {
+        color: green  !important;
+    }
+ } 
+
+* {
+    color: red;
+}
+/* 1 - screen */
+@media screen and (max-width: 500px){
+    /* max-width = tela menor que alguma resolução */
+    h1{
+        color: blue;
+    }
+}
+/* 4 - all (default) */
+@media (max-width: 700px){
+    h2 {
+        color: yellow;
+    }
+}
+/* 5 - mobile first */
+/* min-width > max-width */
+/* min-width = Tela maior que alguma coisa */
+@media (min-width: 200px){
+    h3{
+        color: teal;
+    }
+}
+/* 6 - and */
+@media (min-width: 300px) and (max-width: 400px){
+    /* min-width: 300px: Os estilos serão aplicados quando a tela tiver 300 pixels ou mais de largura. */
+    /* max-width: 400px: Ao mesmo tempo, os estilos só serão aplicados quando a tela tiver 400 pixels ou menos de largura. */
+    h4{
+        font-size: 3em;
+    }
+}
+/* 7 - orientation */
+@media (orientation: landscape /*horizontal*/ ){
+    h3{
+        color: black;
+    }
+}
+/* 8 - or */
+@media (max-width: 200px), (orientation: landscape){
+    h3{
+        font-size: 4em
+    }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee&family=New+Amsterdam&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Portal de noticias</title>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<h1>Jornal MIS</h1>
+			<form>
+				<input type="search" placeholder="Busque no site">
+				<button type="submit">Pesquisar</button>
+			</form>
+		</div>
+		<div class="botao-menu" >
+			<button type="button" >Abrir menu</button>
+		</div>
+	<nav class="container">
+		<ul class="menu">
+			<li>
+				Guerra
+				<ul class="submenu">
+					<li>
+						<a href="#">Israel</a>
+					</li>
+					<li>
+						<a href="#">Irã</a>
+					</li>
+					<li>
+						<a href="#">Iraque</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				Economia
+				<ul class="submenu">
+					<li>
+						<a href="#">Bolsa de valores</a>
+					</li>
+					<li>
+						<a href="#">Imposto de renda</a>
+					</li>
+					<li>
+						<a href="#">Finanças Pessoais</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<div class="clear"></div>
+	</nav>
+	</header>
+	<div class="container conteudo" >
+		<main>
+			<section class="destaque" >
+				<h2>Em destaque</h2>
+				<article class="noticia">
+					<a href="#">
+						<img src="https://via.placeholder.com/320x320" alt="">
+						<h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus a nesciunt quis </h3>
+					</a>
+				</article>
+			</section>
+			<section>
+				<h2>Útlimas notícias</h2>
+				<div class="noticias">
+					<article class="noticia">
+						<a href="#">
+							<img src="https://via.placeholder.com/320x320" alt="">
+							<h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus a nesciunt quis </h3>
+						</a>
+					</article>
+					<article class="noticia" >
+						<a href="#">
+							<img src="https://via.placeholder.com/320x320" alt="">
+							<h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus a nesciunt quis </h3>
+						</a>
+					</article>
+					<article class="noticia" >
+						<a href="#">
+							<img src="https://via.placeholder.com/320x320" alt="">
+							<h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus a nesciunt quis </h3>
+						</a>
+					</article>
+					<article class="noticia" >
+						<a href="#">
+							<img src="https://via.placeholder.com/320x320" alt="">
+							<h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus a nesciunt quis </h3>
+						</a>
+					</article>
+				</div>
+			</section>
+		</main>
+		<aside>
+			<section class="novidades">
+				<h2>Novidades</h2>
+				<article class="noticia">
+					<a href="#">
+						<img src="https://via.placeholder.com/320x320" alt="">
+						<h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus a nesciunt quis </h3>
+					</a>
+				</article>
+				<article class="noticia">
+					<a href="#">
+						<img src="https://via.placeholder.com/320x320" alt="">
+						<h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus a nesciunt quis </h3>
+					</a>
+				</article>
+				<article class="noticia">
+					<a href="#">
+						<img src="https://via.placeholder.com/320x320" alt="">
+						<h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus a nesciunt quis </h3>
+					</a>
+				</article>
+			</section>
+		</aside>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</body>
+<script>
+	// Isso daqui cria uma resposta ao botao de abrir menu
+	$(document).ready(function(){
+		$('.botao-menu button').click(function(){
+			// O slide faz o menu (conteudo que tiver) aparecer lentamenete
+			$('.menu').slideToggle()
+		})
+	})
+</script>
+</html>

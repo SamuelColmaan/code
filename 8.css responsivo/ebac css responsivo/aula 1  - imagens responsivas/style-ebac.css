@@ -1,0 +1,21 @@
+/* Desse jeito o site fica responsivo. As imagens crescem ou diminuem de acordo com o tamanho do site */
+li{
+    width: 100%;
+    list-style-type: none;
+}
+li img{
+    width: 100%;
+}
+@media screen and (min-width: 1366px){
+    li{
+        max-width: 33%;
+        float: left;
+    }
+}
+/* Até aqui */
+@media screen and (orientation: portrait) and (max-width: 640px){
+    body{
+        background-color: black;
+        color: white;
+    }
+}
