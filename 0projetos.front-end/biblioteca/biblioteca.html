@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Samuel colman">
+<title>Biblioteca</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="shortcut icon" href="favicon.ico.png" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1>Biblioteca</h1>
+</header>
+
+<h2>Lendo</h2>
+<table id="tabela-lendo">
+    <thead>
+    <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Ano de Publicação</th>
+        <th>Gênero</th>
+        <th>Enredo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Transmissão (As cronicas da invasão)</td>
+        <td>Morgan rice</td>
+        <td>2018</td>
+        <td>Ficção científica</td>
+        <td>Um thriller de ficção científica que explora a invasão alienígena e suas consequências.</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<h2>Lidos</h2>
+<div>
+    <select id="filtro-titulo-lidos">
+        <option value="">Selecione um título</option>
+    </select>
+    
+    <select id="filtro-autor-lidos">
+        <option value="">Selecione um autor</option>
+    </select>
+    
+    <select id="filtro-genero-lidos">
+        <option value="">Selecione um gênero</option>
+    </select>
+</div>
+<table id="tabela-lidos">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Ano de Publicação</th>
+            <th>Gênero</th>
+            <th>Enredo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>O Menino do Pijama Listrado</td>
+            <td>John Boyne</td>
+            <td>2006</td>
+            <td>Ficção histórica</td>
+            <td>Bruno, o protagonista, não entende completamente a situação política e social ao seu redor. Ele faz amizade com Shmuel, que está em um campo de concentração, e os dois se comunicam através da cerca que separa suas vidas. O livro explora temas como inocência, amizade e as consequências da guerra.</td>
+        </tr>
+        <tr>
+            <td>A Droga da Obediência</td>
+            <td>Pedro Bandeira</td>
+            <td>1984</td>
+            <td>Ficção juvenil</td>
+            <td>A história segue um grupo de adolescentes conhecidos como "Os Karas", que são amigos e têm habilidades especiais. Eles enfrentam um grande desafio quando descobrem um plano para controlar a mente dos jovens por meio de uma droga. Os Karas se unem para combater essa ameaça e desmantelar o esquema, enfrentando várias situações perigosas e usando suas habilidades para resolver o mistério.</td>
+        </tr>
+        <tr>
+            <td>Graça Transformadora</td>
+            <td>Luciano Subirá</td>
+            <td>2017</td>
+            <td>Teologia</td>
+            <td>O livro explora o conceito de graça divina e como essa graça pode transformar a vida dos indivíduos. Luciano Subirá aborda como a graça não é apenas um favor imerecido, mas uma força que pode mudar o caráter, a vida e a experiência espiritual de uma pessoa. Ele discute a importância da graça na vida cristã e como ela se manifesta de maneira prática e poderosa.</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5" id="total-livros">Total de livros: 0</td>
+        </tr>
+    </tfoot>
+</table>
+
+<script src="script.js"></script>
+</body>
+</html>

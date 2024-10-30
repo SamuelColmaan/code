@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Ricky and Morty</title>
+</head>
+<body>
+    <form action="" method="get">
+        <h1>Busca da personagem</h1>
+        <label for="characterId">ID da personagem</label>
+        <input type="number" name="characterId" id="characterId">
+        <hr>
+
+        <h2>Informações:</h2>
+        <label for="name">Nome</label>
+        <input type="checkbox" name="name" id="name">
+
+        <label for="status">Status</label>
+        <input type="checkbox" name="status" id="status">
+
+        <label for="species">Espécie</label>
+        <input type="checkbox" name="species" id="species">
+
+        <label for="gender">Gênero</label>
+        <input type="checkbox" name="gender" id="gender">
+
+        <label for="origin">Origem</label>
+        <input type="checkbox" name="origin" id="origin">
+
+        <label for="image">Foto</label>
+        <input type="checkbox" name="image" id="image">
+
+        <label for="episode">Episódios</label>
+        <input type="checkbox" name="episode" id="episode">
+
+        <hr>
+        <button id="btn-go">Pesquisar</button>
+    </form>
+    
+    <!-- Elemento de imagem para exibir a foto do personagem -->
+    <img id="img" alt="Character Image" style="display: block; margin-top: 20px;">
+
+    <!-- Elemento <pre> para exibir as informações do personagem -->
+    <pre id="content"></pre>
+
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+body {
+    background-color: black
+}
+
+header {
+    text-align: center;
+    font-size: 25px;
+    color: white;
+}
+
+#par {
+    font-size: 15px;
+}
+
+section {
+    background-color: white;
+    height: 150px;
+    width: 600px;
+    margin:auto;
+    padding-top: 20px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#botao {
+    margin-top: 15px;
+}
+
+#resultado {
+    text-align: center;
+    padding-top: 30px;
+    display: none;
+    color: white;
+    font-size: 20px
+}
+
+footer {
+    font-style: italic;
+    text-align: center;
+    padding-top: 180px;
+    font-size: 20px;
+    color: white;
+}

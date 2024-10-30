@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="imc.css">
+</head>
+<body>
+    <header>
+        <h1>Calculadora de IMC</h1>
+        <p id="descripition" >Uma calculadora de IMC (Índice de Massa Corporal) é uma ferramenta que ajuda a determinar se uma pessoa está em um peso saudável com base na sua altura e peso</p>
+    </header>
+    <section id="inputs" >
+        <input type="number" name="txtpeso" id="txtpeso" placeholder="Peso (kg)" required>
+        <input type="number" name="txtaltura" id="txtaltura" placeholder="Altura (m)" required >
+        <br>
+        <button onclick="calcular()" >Calcular</button>
+    </section>
+
+    <div id="whit" >
+        <p>Seu IMC: </p>
+        <p id="res">res</p>
+    </div>
+    <footer>
+        <p>&copy; Samuel Colman</p>
+    </footer>
+    <script src="imc.js"></script>
+</body>
+</html>

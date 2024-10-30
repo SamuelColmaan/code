@@ -1,0 +1,27 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-image: url("https://tse3.mm.bing.net/th?id=OIG4.uG8hgB_8A4xl1kF8Q8aN&pid=ImgGn");
+    background-repeat: no-repeat; /* Faz com que a imagem não se repita */
+    background-size: cover; /* Faz a imagem cobrir todo o fundo da página */
+    background-position: center; /* Centraliza a imagem no fundo */
+}
+
+#content{
+    height: auto;
+    width: 600px;
+    margin: auto;
+    padding: 5px;
+    color: white;
+    text-align: justify;
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px
+}
+
+footer p a {
+    text-decoration: none
+}

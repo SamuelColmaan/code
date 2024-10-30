@@ -1,0 +1,67 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Garante que o body cubra a altura total da página */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+
+main {
+    flex: 1; /* Garante que o main ocupe o espaço restante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#hide-button {
+    height: 50px;
+    width: 200px;
+}
+
+#content {
+    height: auto;
+    width: 300px;
+    color: white;
+    padding: 2px 5px;
+    text-align: justify;
+    font-size: 18px;
+    display: none;
+
+    /* Inicialmente escondido */
+    opacity: 0;
+    transform: translateY(20px); /* Move o conteúdo um pouco para baixo */
+    transition: opacity 1s ease, transform 1s ease; /* Transição suave */
+}
+
+#content.show {
+    opacity: 1; /* Torna o conteúdo visível */
+    transform: translateY(0); /* Move o conteúdo para a posição original */
+}
+
+.gradient-text {
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(to right, #e9aa9f, #83e9eb); /* Gradiente de cores */
+    -webkit-background-clip: text; /* Para suporte em WebKit (Chrome, Safari) */
+    -webkit-text-fill-color: transparent; /* Torna o texto transparente para mostrar o gradiente */
+    background-clip: text; /* Para suporte em outros navegadores */
+    color: transparent; /* Torna o texto transparente */
+}
+
+footer p a{
+    color: rgba(255, 255, 255, 0.315);
+    text-decoration: none;
+}

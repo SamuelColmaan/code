@@ -1,0 +1,88 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background: linear-gradient(to bottom, #032F48, #035585)
+}
+
+#headerr {
+    background-color: #87cfeb93;
+    height: auto;
+    margin: auto;
+    color: white;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Bebas Neue", georgia , sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size:30px
+}
+
+#code{
+    background-color: white;
+    height: auto;
+    width: 350px;
+    margin: auto;
+    text-align: center;
+    padding-top: 10px;
+    color: black
+}
+
+#image {
+    height:200px
+}
+
+#contact-number {
+    margin-top: 10px
+}
+
+input {
+    margin: 10px;
+    padding: 10px;
+}
+
+#botao {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    padding:5px
+}
+
+#contact{
+    margin: auto;
+    padding-top: 20px
+}
+
+
+table {
+    border-collapse: separate; /* Ensure padding is visible */
+    border-spacing: 10px; /* Space between cells */
+}
+
+th, td {
+    padding: 10px; /* Space inside each cell */
+    border: 1px solid #ccc; /* Border to show spacing */
+}
+
+
+footer{
+    color: white;
+    font-size:18px;
+    background-color: #87cfeb27;
+    height: 30px;
+    margin-top: 15px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    font-style:italic;
+
+}
+
+footer a{
+    color: white;
+    text-decoration: none;
+}

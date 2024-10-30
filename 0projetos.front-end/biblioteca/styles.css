@@ -1,0 +1,43 @@
+/* Estiliza a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaçamento entre as bordas das células */
+}
+
+/* Estiliza o cabeçalho da tabela */
+th, td {
+    border: 1px solid black; /* Define a borda das células */
+    padding: 10px; /* Adiciona preenchimento dentro das células */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+/* Estiliza o cabeçalho da tabela com fundo cinza */
+th {
+    background-color: #f2f2f2; /* Cor de fundo cinza claro */
+}
+
+/* Estiliza a tabela no rodapé */
+tfoot td {
+    font-weight: bold; /* Deixa o texto em negrito */
+    background-color: #f9f9f9; /* Cor de fundo cinza claro para o rodapé */
+    text-align: center; /* Alinha o texto ao centro */
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.781);
+}
+table {
+    background-color: white;
+}
+
+h1, h2 {
+    color: white;
+    text-align: center;
+}
+
+textarea {
+    resize: none;
+    width: 100px;
+    height: 1000px;
+    box-sizing: border-box;
+}

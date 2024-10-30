@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Samuel" >
+    <meta name="description" content="Contact List is a user-friendly application for managing and organizing contacts. Easily add, view, and track contact names and numbers with a clean, modern interface." >
+    <link rel="stylesheet" href="contact_list.css">
+    <title>Contact List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="headerr" >
+        <h1>Contact List</h1>
+    </header>
+
+    <main id="code" >
+        <div id="information">
+            <img id="image" src="https://tse4.mm.bing.net/th?id=OIG1.6ZfqE9QZ5G5WwE2bdtOZ&pid=ImgGn" alt="image of a contact list">
+            <input id="contact-name" type="text" placeholder="Contact Name" required>
+            <input id="contact-number" type="number" placeholder="Contact Number" required>
+            <input id="botao" type="button" value="ADD" onclick="add()">
+        </div>
+    
+            <table id="contact" >
+                <thead>
+                    <tr>
+                    <th>Contact name</th> 
+                    <th>Contact number</th>
+                    </tr>
+                </thead>
+                
+                <tbody id="result" >
+                    <tr>
+                        <th>Total:</th>
+                        <th id="res" >--</th>
+                    </tr>
+                </tbody>
+            </table>
+    </main> 
+    <footer>
+        <a href="https://www.linkedin.com/in/samuel-colman-37395922b/" target="_blank" title="My linkedIn" id="linke">linkedIn</a> &copy; Samuel Colman   <a href="https://github.com/SamuelColmaan" target="_blank" title="My GitHub" >GitHub</a>
+    </footer>
+
+    <script src="contact_list.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Este site transforma uma medida de temperatura para outra medida">
+    <meta name="author" content="Samuel Colman">
+    <title>Conversor de Temperatura</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Conversor de temperatura</h1>
+    </header>
+
+    <section>
+        <div>
+            <p>Temperatura</p>
+            <input type="number" name="txtnum" id="nume1"> 
+            <p>Conversão</p>
+            <input type="number" name="txtnum" id="nume2" readonly>
+
+            <div>
+                <p>de</p>
+                <label for="txtcelcius">Celcius</label>
+                <input type="radio" name="de" id="txtcelcius">
+                <label for="txtfahren">Fahrenheit</label>
+                <input type="radio" name="de" id="txtfahren">
+                <label for="txtkelvin">kelvin</label>
+                <input type="radio" name="de" id="txtkelvin">
+                <p>Para</p>
+                <label for="txtcel">Celcius</label>
+                <input type="radio" name="para" id="txtcel">
+                <label for="txtfah">Fahrenheit</label>
+                <input type="radio" name="para" id="txtfah">
+                <label for="txtkel">Kelvin</label>
+                <input type="radio" name="para" id="txtkel">
+            </div>
+        </div>
+
+        <div>
+            <br>
+            <input type="button" value="Converter" onclick="converter()" >
+        </div>
+    </section>
+
+    <script src="srcipt.js"></script>
+
+    <footer>
+        <p>&copy; Samuel Colman</p>
+    </footer>
+
+</body>
+</html>
