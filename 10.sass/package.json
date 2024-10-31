@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "sass": "sass",
+  "scripts": { 
+    "sass": "sass source/main.scss build/main.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
