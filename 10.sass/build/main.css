@@ -41,9 +41,11 @@ header .container {
 .menu li {
   font-weight: bold;
   margin-left: 24px;
+  list-style: none;
 }
 .menu a {
   color: #fff;
+  text-decoration: none;
 }
 
 section {
@@ -96,6 +98,21 @@ section {
   }
   .product-item {
     margin-bottom: 32px;
+  }
+  .nav-container {
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .nav-container .menu {
+    display: block;
+    flex-direction: column;
+  }
+  .nav-container .menu li {
+    padding-top: 10px;
+  }
+  .branding img {
+    margin-left: 20px;
   }
 }
 

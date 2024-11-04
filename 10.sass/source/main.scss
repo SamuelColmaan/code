@@ -4,19 +4,6 @@
 @use 'sass:color'; // Adiciona o módulo 'sass:color' para usar a função 'darken'
 
 
-// Mixins
-@mixin elementoForm() {
-    padding: 8px;
-    display: block;
-    width: 100%;
-    background-color: transparent;
-}
-
-@mixin espace() {
-    margin-bottom: 16px;
-}
-
-
 // Estilos Globais
 body {
     background-color: variaveis.$corDeFundo;
@@ -54,10 +41,13 @@ header {
     li {
         font-weight: bold;
         margin-left: 24px;
+        list-style: none
     }
 
     a {
         color: variaveis.$Fonte;
+        text-decoration: none
+
     }
 }
 
@@ -123,4 +113,23 @@ section {
     .product-item {
         margin-bottom: 32px;
     }
+
+    .nav-container {
+        display: block;
+        flex-direction: column;
+        justify-content: center;
+
+        .menu {
+            display: block;
+            flex-direction: column;
+            
+            li {
+                padding-top: 10px
+            }
+        }
+    }
+    .branding img {
+        margin-left: 20px
+    }
+    
 }
