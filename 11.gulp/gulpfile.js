@@ -1,20 +1,27 @@
 const gulp = require ('gulp');
+const sass = require ('gulp-sass')(require('sass'))
 
 function funcaoPadrao(callback){
-    console.log('Teste de gulp');
-    callback();
+    setTimeout(function() {
+        console.log('Executando via gulp');
+        callback();
+    }, 2000)
 }
 
 function dizOi(callback) {
-    console.log('Hello, world')
-    dizTchau()
-    callback()
+    setTimeout(function(){
+        console.log('Hello, world')
+        dizTchau()
+        callback()
+    }, 5000)
 }
 
 function dizTchau(){
     console.log('Tchau gulp')
 }
-
+/* Em série basta eu rodar  exports.default = gulp.series(funcaoPadrao, dizOi);
+*/
+/* Em paralelo basta rodar em parallel */
 exports.default = gulp.series(funcaoPadrao, dizOi);
 exports.dizOi = dizOi;
 
