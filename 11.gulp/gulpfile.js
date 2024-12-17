@@ -1,29 +1,46 @@
-const gulp = require ('gulp');
-const sass = require ('gulp-sass')(require('sass'))
+const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
+const sourcemaps = require('gulp-sourcemaps')
 
-function funcaoPadrao(callback){
-    setTimeout(function() {
+function compilaSass() {
+    return gulp.src('./source/styles/main.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }))
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest('./build/styles'));
+}
+
+function funcaoPadrao(callback) {
+    setTimeout(function(){
         console.log('Executando via gulp');
         callback();
     }, 2000)
+
 }
 
-function dizOi(callback) {
-    setTimeout(function(){
-        console.log('Hello, world')
-        dizTchau()
-        callback()
-    }, 5000)
+function sayHi (callback) {
+    console.log('Hi, gulp!');
+    sayBye()
+    callback();
 }
 
-function dizTchau(){
-    console.log('Tchau gulp')
-}
-/* Em série basta eu rodar  exports.default = gulp.series(funcaoPadrao, dizOi);
-*/
-/* Em paralelo basta rodar em parallel */
-exports.default = gulp.series(funcaoPadrao, dizOi);
-exports.dizOi = dizOi;
+function sayBye() {
+    console.log('bye, Gulp')
+} 
 
-/* Na hora de chamar a tarefa default não precisa especificar. Pode colocar no terminal: npm run gulp */
-/* Mas a tarefa que não é default precisa ser chamada com o nome dela no terminal. Por exemplo: npm run gulp dizOi */
+exports.default = gulp.series(funcaoPadrao, sayHi) // executando em série
+exports.sass = compilaSass
+exports.watch = function() {
+    gulp.watch('./source/styles/*.scss', {ignoreInitial: false}, gulp.series(compilaSass));
+}
+
+//exports.default = gulp.parallel(funcaoPadrao, sayHi) // executando em paralelo
+
+
+/* exports.default = funcaoPadrao;
+exports.sayHi = sayHi */
+
+//Tarefas públicas são as que exportamos 
+// Tarefas privadas são as que não exportamos, mas podemos usar dentro de outras tarefas

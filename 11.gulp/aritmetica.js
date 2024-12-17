@@ -1,2 +1,3 @@
-const somar = require('./sun');
-console.log('somar:', somar(10, 20));
+const somar = require('./sum');
+
+console.log('Resultado da soma:', somar(10, 20))
