@@ -2,10 +2,18 @@ const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
+const obfuscate = require ('gulp-obfuscate'); //tornar um arquivo ilegível
+const imagemin = require('gulp-imagemin');
 
+function comprimeImagens(){
+    return gulp.src('./source/images/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('./buld/images'))
+}
 function comprimeJavaScript() {
     return gulp.src ('./source/scripts/*.js')
     .pipe(uglify())
+    .pipe(obfuscate())
     .pipe(gulp.dest('./build/scripts'))
 } 
 
@@ -19,31 +27,15 @@ function compilaSass() {
         .pipe(gulp.dest('./build/styles'));
 }
 
-function funcaoPadrao(callback) {
-    setTimeout(function(){
-        console.log('Executando via gulp');
-        callback();
-    }, 2000)
 
-}
-
-function sayHi (callback) {
-    console.log('Hi, gulp!');
-    sayBye()
-    callback();
-}
-
-function sayBye() {
-    console.log('bye, Gulp')
-} 
-
-exports.default = gulp.series(funcaoPadrao, sayHi) // executando em série
 exports.sass = compilaSass
-exports.watch = function() {
+exports.default = function() {
     gulp.watch('./source/styles/*.scss', {ignoreInitial: false}, gulp.series(compilaSass));
+    gulp.watch('./source/scripts/*.js', {ignoreInitial: false}, gulp.series(comprimeJavaScript));
+    gulp.watch('./source/images/*', {ignoreInitial: false}, gulp.series(comprimeImagens));
+
 }
 
-exports.javascript = comprimeJavaScript
 //exports.default = gulp.parallel(funcaoPadrao, sayHi) // executando em paralelo
 
 
