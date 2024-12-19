@@ -16,3 +16,6 @@ function compilaSass(){
 }
 
 exports.sass = compilaSass;
+exports.watch = function() {
+    gulp.watch('./source/styles/*.scss', {ignoreInitial: false }, gulp.series(compilaSass))
+}
