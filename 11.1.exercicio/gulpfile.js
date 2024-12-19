@@ -1,7 +1,13 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass')); //compilação composta. O primeiro pacote é resposável por integrar o sass com o gulp (gulp-sass), mas quem vai fazer toda a compilação é o segundo pacote (sass). 
 const sourcemaps = require('gulp-sourcemaps'); 
+const uglify = require('gulp-uglify')
 
+function comprimeJavaScript() {
+    return gulp.src('./source/scripts/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('./build/scripts'))
+}
 // A execução da função compilaSass:
 // O .src é para pegar o aquivo fonte;
 // O pipe é para de fato compilar
@@ -19,3 +25,4 @@ exports.sass = compilaSass;
 exports.watch = function() {
     gulp.watch('./source/styles/*.scss', {ignoreInitial: false }, gulp.series(compilaSass))
 }
+exports.javascript = comprimeJavaScript
