@@ -1,11 +1,20 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass')); //compilação composta. O primeiro pacote é resposável por integrar o sass com o gulp (gulp-sass), mas quem vai fazer toda a compilação é o segundo pacote (sass). 
-const sourcemaps = require('gulp-sourcemaps'); 
-const uglify = require('gulp-uglify')
+const sourcemaps = require('gulp-sourcemaps'); // Vai mostrar para o navegador ao invés do local final onde se encontra a linha do style css, o local intermediário na linha correta.
+const uglify = require('gulp-uglify'); // Faz a importação do pacote que vai comprimir o JavaScript
+const obfuscate = require('gulp-obfuscate'); // Faz a importação do pacote que vai ofuscar o JavaScript
+const imagemin = require('gulp-imagemin'); // Faz a importação do pacote que vai comprimir as imagens
+
+function comprimeImagem() {
+    return gulp.src('./source/images/*') // É importante não colocar a extensão do arquivo pois são varios formatos de imagem (png, jpeg...)
+    .pipe(imagemin())
+    .pipe(gulp.dest('./build/images'))
+}
 
 function comprimeJavaScript() {
     return gulp.src('./source/scripts/*.js')
-    .pipe(uglify())
+    .pipe(uglify()) // Comprime o JavaScript
+    .pipe(obfuscate()) // Ofusca o JavaScript
     .pipe(gulp.dest('./build/scripts'))
 }
 // A execução da função compilaSass:
@@ -21,8 +30,8 @@ function compilaSass(){
         .pipe(gulp.dest('./build/styles/')); // Colocar o caminho da pasta de destino da compilação
 }
 
-exports.sass = compilaSass;
-exports.watch = function() {
+exports.default = function() {
     gulp.watch('./source/styles/*.scss', {ignoreInitial: false }, gulp.series(compilaSass))
+    gulp.watch('./source/scripts/*.js', {ignoreInitial: false }, gulp.series(comprimeJavaScript));
+    gulp.watch('./source/images/*', {ignoreInitial: false }, gulp.series(comprimeImagem));
 }
-exports.javascript = comprimeJavaScript
