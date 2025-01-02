@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "less": "less-watch-compiler ./src/styles ./build/styles main.less"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "less": "^4.2.1"
+    "less": "^4.2.1",
+    "less-watch-compiler": "^1.16.3"
   }
 }
