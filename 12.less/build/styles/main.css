@@ -19,13 +19,11 @@ body {
 @media (max-width: 767px) {
   .container {
     max-width: 70%;
-    background-color: red;
   }
 }
 @media  (min-width:768px) and (max-width: 1023px) {
   .container {
     max-width: 80%;
-    background-color: yellow;
   }
 }
 header {
@@ -50,4 +48,21 @@ header .profile-avatar {
 .profile-bio-description {
   font-size: 14px;
   opacity: 0.7;
+  margin-bottom: 18px;
+}
+.social-links {
+  display: flex;
+  justify-content: space-between;
+  max-width: 280px;
+  width: 100%;
+  margin: 0 auto;
+}
+.social-links li {
+  list-style: none;
+}
+.social-links li img {
+  transition: all ease 0.2s;
+}
+.social-links li img:hover {
+  transform: scale(1.3);
 }
