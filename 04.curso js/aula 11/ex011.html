@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PF</title>
+</head>
+<body>
+    <h1>Analisador de estrangeiro</h1>
+    Sua nacionalidade: <input type="text" name="Analisador" id="Analisador">
+    <input type="button" value="Verificar" onclick="verificação()" >
+    <div id="resultado" ></div>
+    <script>
+        function verificação() {
+            let nacionalidade = document.getElementById('Analisador').value.toLowerCase();
+            let resultado = document.getElementById('resultado')
+            if (nacionalidade === 'brasileiro') {
+                resultado.innerHTML = '<p>Você não é estrangeiro.</p>';
+            } else {
+                resultado.innerHTML = '<p>Você é estrangeiro.</p>';
+            }
+        }
+        
+    </script>
+
+</body>
+</html>

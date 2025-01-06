@@ -1,0 +1,167 @@
+Passo a passo de como instalar o gulp.
+
+Final deste passo a passo estará o código, mas é importante você criar as pastas que precisão ser criadas. Ao longo do passo a passo encontrará.
+
+1) No terminal do projeto: npm install --save-dev gulp-sass
+
+2) No terminal do projeto: npm install --save-dev sass
+
+3) No projeto criar um arquivo chamado gulpfile.js
+
+3.1.1) Colocar a requisição do pacote 'gulp', deste jeito: const gulp = require('gulp'). - primeira linha de código
+
+3.1.2) Nele colocar nas linhas de código a requisição do pacote 'gulp-sass' e 'sass'. Deste jeito: const sass = require('gulp-sass')(require('sass')). - Segunda linha de código
+
+3.2) Criar uma função: function compilaSass(){
+		       	  return gulp.scr('./source/styles/main.scss'} // Se colocar *.scss pegará tudo, mas não tem sintido já que o arquivo de variáveis não possui código css.
+			  .pipe(sass()) // Aqui chama a variável que fez a requisição dos pacotes.
+			  .pipe(gulp.dest(./build/styles/)); // Caminho onde o resultado vai aparecer.
+
+3.3) Criar dentro do projeto as pastas: 
+a) source e dentro de source a pasta styles;
+b) build e dentro de build a pasta styles (sim dnv).
+
+3.4) Dentro de source/styles criar um arquivo main.scss
+a) dentro do main.scss colocar @use 'variaveis' para importar as variáveis;
+b) colocar o código a ser transformado pelo scss. Exemplo: body {background-color: variaveis.$corPrincipal};
+c) criar dentro de source/styles um arquivo chamado variáveis. Colocar o código a ser puxado pelo @use 'variaveis'. Dentro desse contexto seria, por exemplo: $corPrincipal: blue.
+
+4) Ao final do arquivo 'gulpfile.js' colocar exports.sass = compilaSass // O nome da função
+
+Do jeito que está o gulp irá apenas compilar o css, mas para minificar o arquivo css é preciso fazer o seguinte:
+
+a) Na parte 3.2 na linha do .pipe(sass()) é preciso abrir com colchetes assim: .pipe(sass({outputStyle: 'compressed'})). Está parte: outputStyle: 'compressed' é que ira minificar o js. 
+
+b)Importante! Até onde eu estou (18/12/2024) as versões mais compativeis do node.js, gulp e gulp-sass são:
+
+I) NODE
+I) node v20.18.0 (Qualquer versão acima da 16) 
+I) Para verificar a versão do node, digite no terminal: node -v 
+I) Baixar o node no site oficial.
+
+II) GULP
+II) gulp@5.0.0 (versão compatível)
+II) Para verificar a versão do gulp, digite no terminal: npm list gulp
+II) Para instalar a versão recomendada por mim do gulp, digite no terminal: npm install gulp@5.0.0
+
+III) GULP-SASS
+III) gulp-sass@5.1.0 (Versão compatível)
+III) Para verificar a versão do gulp-sass, digite no teriminal: npm list gulp-sass
+III) Para instalar a versão recomendada por mim do gulp-sass, digite no terminal: npm install gulp-sass@5.1.0
+
+IV) SASS
+IV) sass@1.83.0 (Versão compatível)
+IV) Para verificar no terminal a versão compatível do sass, digite no terminal: npm list sass
+IV) Para instalar a versão recomendada por mim do sass, digite no terminal: npm install sass@1.83.0
+
+Pontuo novamente que futuramente pode parar de funcionar e precisará testar em outras versões
+
+5) Para fazer o navegador reconhecer o css no arquivo intermédiario ao invés do final é preciso fazer o seguinte:
+
+a) Como verificar: criar um arquivo HTML5 linkar com o css. (No caso do nosso projeto: href="styles/main.css"). Abrir com o live server, abrir o dev tools. Na parte de styles vai aparecer.
+b) No terminal do projeto instalar o gulp-sourcemaps, digite: npm install gulp-sourcemaps.
+c) Fazer a importação do gulp-sourcemaps. Digite no arquivo gulpfile.js: const sourcemaps = require('gulp-sourcemaps').
+d) Colocar também no arquivo gulpfile.js, agora dentro da função compilaSass: .pipe(sourcemaps.init()) e abaixo também: .pipe(sourcemaps.write('./maps)) // Ele vai criar a pasta sozinho. Demonstração) Vai ficar deste jeito o código da função: 
+function compilaSass(){
+    return gulp.src('./source/styles/main.scss') // Colocar o caminho das pastas.
+        .pipe(sourcemaps.init()) 
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }))//aqui dentro é chamando a variável que fez a requisição dos pacotes.
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest('./build/styles/')); // Colocar o caminho da pasta de destino da compilação
+}
+
+6) Como fazer o gulp ficar observando as modificações sem precisar ficar executando gulp saas toda hora no terminal:
+
+a) Colocar nas linhas de código do arquivo gulpgile.js: exports.watch = function() {
+    									      gulp.watch('./source/styles/*.scss', {ignoreInitial: false }, gulp.series(compilaSass))
+									}
+
+7) Comprimindo arquivos JavaScript
+a) Instale o uglify, digite no terminal do projeto: npm install --save-dev gulp-uglify
+b)Importe o uglify no arquivo gulpfile.js, assim: const uglify = require('gulp-uglify')
+c) Nas linhas de código do arquivo gulpfile.js, crie uma nova função chamada comprimeJavaScript e dentro dela coloque o return com as pastas de destino através do gulp.src('./source/scripts/*js'), abaixo um pipe uglify e abaixo a pasta de destino através do gulp.dest('./build/scripts/')
+Demonstração: function comprimeJavaScript() {
+    		 return gulp.src('./source/scripts/*.js')
+    		 .pipe(uglify())
+    		 .pipe(gulp.dest('./build/scripts'))
+		 }
+d) Exporte a tarefa deste jeito: exports.javascript = comprimeJavaScript
+e) Crie as pastas necessárias: 
+I) Na pasta source crie scripts
+II) Na pasta build crie scripts (sim dnv)
+f) Execute gulp javascript
+
+7.1) Fazendo obfuscação do JavaScript:
+a) Instale o obfuscate, digite no terminal do projeto: npm install --save-dev gulp-obfuscate
+b) Fazer a importação do gulp-obfuscate, digite nas linhas de código do arquivo: const obfuscate = require('gulp-obfuscate'())
+c) Dentro da função comprimeJavaScript, adiocionar: .pipe(obfuscate())
+Demonstração) function comprimeJavaScript() {
+    		 return gulp.src('./source/scripts/*.js')
+    		 .pipe(uglify())
+    		 .pipe(obfuscate())
+    		 .pipe(gulp.dest('./build/scripts'))
+		 }
+8) Fazendo compressão de imagens através do Gulp
+a) Instale o imagemim, digite no terminal do projeto: npm install --save-dev gulp-imagemin
+b) Fazer a importação do imagemim, digite nas linhas de código do arquivo gulpgile.js: const imagemin = require('gulp-imagemin'); // Faz a importação do pacote que vai comprimir as imagens
+c) criar a nova função que vai retornar a imagem comprimida, digite: function comprimeImagem() {
+    									return gulp.src('./source/images/*') // É importante não colocar a extensão do arquivo pois são varios formatos de 									imagem (png, jpeg...)
+    									.pipe(imagemin())
+    									.pipe(gulp.dest('./build/images'))
+									}
+d) Fazer a exportação: exports.comprimeImagem = comprimeImagem
+e) Crie as pastas necessárias:
+I) Na pasta source crie images
+II) Na pasta build crie images (Sim dnv)
+f) Caso a versão que foi instalada automaticamente não funcione, instale outra da seguinte forma, digite no terminal do projeto: npm install --save-dev gulp-imagemin@7.1.0 (Tenha a versão instalada do gulp 4.0.2, se nao tiver, npm install --save-dev gulp@4.0.2,)
+g) Execute no terminal do projeto: gulp imagemin
+
+9) Arrumando o projeto:
+a) Colocar tudo dentro da função default: exports.default = function() {
+    							gulp.watch('./source/styles/*.scss', {ignoreInitial: false }, gulp.series(compilaSass))
+    							gulp.watch('./source/scripts/*.js', {ignoreInitial: false }, gulp.series(comprimeJavaScript));
+						    	gulp.watch('./source/images/*', {ignoreInitial: false }, gulp.series(comprimeImagem));
+							}
+b) O arquivo gulpfile.js ficará desta forma: 
+const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass')); //compilação composta. O primeiro pacote é resposável por integrar o sass com o gulp (gulp-sass), mas quem vai fazer toda a compilação é o segundo pacote (sass). 
+const sourcemaps = require('gulp-sourcemaps'); // Vai mostrar para o navegador ao invés do local final onde se encontra a linha do style css, o local intermediário na linha correta.
+const uglify = require('gulp-uglify'); // Faz a importação do pacote que vai comprimir o JavaScript
+const obfuscate = require('gulp-obfuscate'); // Faz a importação do pacote que vai ofuscar o JavaScript
+const imagemin = require('gulp-imagemin'); // Faz a importação do pacote que vai comprimir as imagens
+
+function comprimeImagem() {
+    return gulp.src('./source/images/*') // É importante não colocar a extensão do arquivo pois são varios formatos de imagem (png, jpeg...)
+    .pipe(imagemin())
+    .pipe(gulp.dest('./build/images'))
+}
+
+function comprimeJavaScript() {
+    return gulp.src('./source/scripts/*.js')
+    .pipe(uglify()) // Comprime o JavaScript
+    .pipe(obfuscate()) // Ofusca o JavaScript
+    .pipe(gulp.dest('./build/scripts'))
+}
+// A execução da função compilaSass:
+// O .src é para pegar o aquivo fonte;
+// O pipe é para de fato compilar
+function compilaSass(){
+    return gulp.src('./source/styles/main.scss') // Colocar o caminho das pastas.
+        .pipe(sourcemaps.init()) 
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }))//aqui dentro é chamando a variável que fez a requisição dos pacotes.
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest('./build/styles/')); // Colocar o caminho da pasta de destino da compilação
+}
+
+exports.default = function() {
+    gulp.watch('./source/styles/*.scss', {ignoreInitial: false }, gulp.series(compilaSass))
+    gulp.watch('./source/scripts/*.js', {ignoreInitial: false }, gulp.series(comprimeJavaScript));
+    gulp.watch('./source/images/*', {ignoreInitial: false }, gulp.series(comprimeImagem));
+}
+
+
+Clone o meu repositório para o seu ambiente e execute o comando npm install. Automaticamente colocará todas as dependências. Depois execute com o comando gulp no terminal do projeto.

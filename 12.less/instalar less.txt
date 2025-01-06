@@ -1,0 +1,58 @@
+// Passo a passo de como instalar o less.
+
+// INICIANDO
+1) No terminal do projeto: npm install -g less
+
+2) No terminal do projeto: npm init
+2.1) Pressionar Enter para todas as perguntas  
+
+3) npm install --save-dev less
+
+4) criar o arquivo .gitignore
+4.1) No .gitignore escrever: node modules
+
+5) Criar um arquivo index.html
+
+6) Criar uma pasta chamada src dentro dela criar uma pasta chamada syles dentro de styles criar um arquivo chamado main.less (Path: src/styles/main.less)
+
+7) No package.json criar um script. "less": "lessc ./src/styles/main.less ./build/styles/main.css" // Precisa estar dentro de "scripts"
+
+// INSTALANDO WATCHER
+
+// O less por padrão não possui a função de watch quando usamos ele via de comando.
+// Por isso vamos instalar um plugin via linha de comando
+
+8) Para instalar o plugin, digite no terminal: npm install --save-dev less-watch-compiler
+8.1) No package.json substituir o lessc pelo less-watch-compiler e no caminho não é mais necessário passar o arquivo apenas as pastas. O comando inteiro fica deste
+
+9) Dentro do aquivo index.html escrever algum código
+
+// CRIANDO VARIÁVEIS
+
+10) dentro da pasta src/styles criar um arquivo variaveis.less
+10.1) Escrever: @corDeFundo: #192a56;
+	        @corDosBotoes: #0097e6;
+	        @corDosTextos: #f5f6fa;
+10.2) No main.less importar o nome do arquivo de variáveis para poder usar, digite: @import "variaveis.less"
+
+// Criando mixins
+// É necessario ter um código HTML e iremos mexer no css. No arquivo .less que iremos criar os mixins. É possível utilizá-los para não precisar repetir os styles
+
+11) Cria-se igual se chama uma classe. No início do arquivo .less coloca o nome e passa o parâmeto deste jeito: .marginBottom10{
+				      margin-bottom: 8px;
+				      }
+11.1) Utiliza-se que nem se chama função, deste jeito:  .marginBottom8() 
+
+// Criando mapas
+
+12) na pasta src/styles criar um novo arquivo chamado mapas.less
+12.1) Nele colocar: #colors() { 
+    backgroundColor: #192a56 ;
+    buttonColor:  #0097e6;
+    textColor:  #f5f6fa;
+}
+12.2) No main.less para mudar, por exemplo, o background color da página faça isto: body {
+    background-color: #colors[backgroundColor];
+}
+12.3) Pode excluir o arquivo variaveis.less
+I) Ao fazer isso precisa excluir a importação no arquivo main.less e substiruir pelo mapa caso esteja usando algum variável
