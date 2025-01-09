@@ -34,6 +34,9 @@ module.exports = function(grunt) {
                     'main2.css': 'main.scss' // O main2.css é apenas para um arquivo não reescrever sobre o outro
                 }
             }
+        },
+        concurrent: {
+            target: ['olaGrunt', 'tarefaDemorada', 'less', 'sass'] // A propriedade target é o array que vamos passar o nome das tarefas a srem executadas de maneira paralela
         }
     });
 
@@ -44,9 +47,17 @@ module.exports = function(grunt) {
             done();
         },3000);
     })
+    grunt.registerTask('tarefaDemorada', function() {
+        const done = this.async();
+        setTimeout(function(){
+            console.log('Olá, Grunt');
+            done();
+        },3000);
+    })
 
     grunt.loadNpmTasks('grunt-contrib-less'); // Chama o plugin do less
     grunt.loadNpmTasks('grunt-contrib-sass'); // Chama o plugin do sass
+    grunt.loadNpmTasks('grunt-concurrent'); // Chama o plugin para o gtun executar tarefas de forma paralela
 
-    grunt.registerTask('default', ['less', 'sass']);
+    grunt.registerTask('default', ['concurrent']);
 };

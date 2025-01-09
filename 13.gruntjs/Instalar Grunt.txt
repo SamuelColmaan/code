@@ -140,3 +140,17 @@ VII) Para que o arquivo final do sass - o css - também saia minificado podemos 
 options: {
     style: 'compressed'
 }, 
+
+8) Executando tarefas de forma paralela // Isso é importante porque se uma tarefa muito pesad, como o olaGrunt (que está som setTimeout), for executada ele vai segurar as outras tarefas 
+a) Instale o plugin pelo terminal, digite: npm install --save-dev grunt-concurrent
+
+b) Configure o concurrent dentro do grunt.initConfig, assim:
+concurrent: {
+            target: ['olaGrunt', 'less', 'sass'] // A propriedade target é o array que vamos passar o nome das tarefas a srem executadas de maneira paralela
+        }
+
+c) Na parte que passa a tarefa default colocar dentro do array apenas o concurrent. Apagar as outras tarefa, pois já estarão no array dentro do initConfig. Faça assim:
+grunt.registerTask('default', ['concurrent']);
+
+d) Afim de testes criei uma tarefa chamada tarefa demorada. Apenas copiei a tarefa olaGrunt e colei embaixo (Mudei o nome) e coloquei dentro do array do concurrent
+
