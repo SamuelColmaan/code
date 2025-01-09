@@ -1,0 +1,41 @@
+Projeto em grunt
+
+// Irei mostrar como um projeto pode ser rodado em um ambiente de produção, como, por exemplo, a vercel.
+// Dentro do initConfig é importante ter o less e dentro de less a aba development e production. Fica deste jeito:
+
+1)
+// Dentro do initConfig é importante ter o less e dentro de less a aba development e production. Fica deste jeito:
+module.exports = function(grunt) {
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        
+        less: {
+            development: {
+                files: {
+                    'dev/styles/main.css': 'src/stylesmain.less'
+                }
+            },
+            production: {
+                options: {
+                    compress: true // booleano
+                },
+                files: {
+                    'dist/styles/main.min.css': 'src/styles/main.less' // distribution
+                    // Vercel is going to read this folder
+                }
+            }
+        },
+
+2) Na parte de register.task vai ficar assim: 
+grunt.registerTask('default', ['less:development']);
+grunt.registerTask('build', ['less:production']);
+a) type: npm run grunt
+
+3) The configuration of the package.json file will lok like this:
+"scripts": {
+    "grunt": "grunt",
+    "build": "grunt build",
+a) type: npm run build // It will create the minified CSS file
+
+4) Your HTML file has to use this folder path: ../dev/styles/main.css if it doesn't work, use this: dev/styles/main.css
+

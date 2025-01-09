@@ -3,13 +3,14 @@
 // INICIANDO
 1) No terminal do projeto: npm install -g less
 
+
 2) No terminal do projeto: npm init
 2.1) Pressionar Enter para todas as perguntas  
 
 3) npm install --save-dev less
 
 4) criar o arquivo .gitignore
-4.1) No .gitignore escrever: node modules
+4.1) No .gitignore escrever: node_modules
 
 5) Criar um arquivo index.html
 
@@ -22,8 +23,8 @@
 // O less por padrão não possui a função de watch quando usamos ele via de comando.
 // Por isso vamos instalar um plugin via linha de comando
 
-8) Para instalar o plugin, digite no terminal: npm install --save-dev less-watch-compiler
-8.1) No package.json substituir o lessc pelo less-watch-compiler e no caminho não é mais necessário passar o arquivo apenas as pastas. O comando inteiro fica deste
+8) Para instalar o plugin, digite no terminal: npm install -g less-watch-compiler e npm install --save-dev less-watch-compiler
+8.1) No package.json substituir o lessc pelo less-watch-compiler e no caminho não é mais necessário passar o arquivo apenas as pastas. O comando inteiro fica deste jeito: "less": "less-watch-compiler ./src/styles ./build/styles",
 
 9) Dentro do aquivo index.html escrever algum código
 
