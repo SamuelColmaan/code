@@ -5,6 +5,36 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        // Podemos criar ambientes diferentes a partir de onde o grunt é executado;
+        // Neste caso chama-se development. Ele é o ambiente padrão;
+        // Podemos criar outros, como, por exemplo o ambiente final de produção (Vercel, por exemplo)
+        less: {
+            development: {
+                files: {
+                    'main.css': 'main.less'
+                }
+            },
+            production: {
+                options: {
+                    compress: true // booleano
+                },
+                files: {
+                    'main.min.css': 'main.less' // min de minificado (Versão de produção)
+                }
+            }
+        },
+
+        // A configuração do sass é um pouco diferente da do less
+        sass: {
+            dist: {
+                options: {
+                    style: 'compressed'
+                }, 
+                files: {
+                    'main2.css': 'main.scss' // O main2.css é apenas para um arquivo não reescrever sobre o outro
+                }
+            }
+        }
     });
 
     grunt.registerTask('olaGrunt', function() {
@@ -14,5 +44,9 @@ module.exports = function(grunt) {
             done();
         },3000);
     })
-    grunt.registerTask('default', ['olaGrunt'])
+
+    grunt.loadNpmTasks('grunt-contrib-less'); // Chama o plugin do less
+    grunt.loadNpmTasks('grunt-contrib-sass'); // Chama o plugin do sass
+
+    grunt.registerTask('default', ['less', 'sass']);
 };
