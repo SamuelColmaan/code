@@ -1,7 +1,6 @@
 Projeto em grunt
 
 // Irei mostrar como um projeto pode ser rodado em um ambiente de produção, como, por exemplo, a vercel.
-// Dentro do initConfig é importante ter o less e dentro de less a aba development e production. Fica deste jeito:
 
 1)
 // Dentro do initConfig é importante ter o less e dentro de less a aba development e production. Fica deste jeito:
@@ -39,3 +38,123 @@ a) type: npm run build // It will create the minified CSS file
 
 4) Your HTML file has to use this folder path: ../dev/styles/main.css if it doesn't work, use this: dev/styles/main.css
 
+5) If you want a grunt-watcher, type: npm install --save-dev grunt-contrib-watch
+a) Call it in your code. It will like this: grunt.loadNpmTasks('grunt-contrib-watch')
+
+b) You have to change gruntfile.js code. Add in initConfig watch. It will look like this:
+ watch: {
+            less: {
+                files: ['src/styles/**/*.less'],
+                tasks: ['less:development']
+            }
+        }
+
+c) Change the registerTask. The new one will look like this:
+grunt.registerTask('default', ['watch']);
+I) Than type: npm run grunt
+
+6) If you want your site on the web, you'll need one html file linked with dev folder and another on with dist folder
+a) Install grunt-replace plugin: npm install --save-dev grunt-replace
+
+b) You have to call it on your code. It will look like this:   grunt.loadNpmTasks('grunt-replace');
+
+c) Add the new plugin to your file. It will lok like this:
+replace: {
+            dev: {
+                options: {
+                    patterns: [
+                        {
+                            match: 'css_adress',
+                            replacement: './styles/main.css'
+                        }
+                    ]
+                },
+                files: [
+                    {
+                    expand: true,
+                    flatten: true,
+                    src: ['src/index.html'],
+                    dest: 'dev/'
+                    }
+                ]
+            }
+        }
+
+d) Replace your css link with the match. It will lok like this: <link rel="stylesheet" href="@@css_adress">
+
+e) Run this in the terminal: npm run grunt replace:dev
+
+7) Minify the HTML file 
+a) Install the new plugin: npm install --save-dev grunt-contrib-htmlmin
+
+b) Call it to your code. It will look like this: grunt.loadNpmTasks('grunt-contrib-htmlmin')
+
+c) Add the new plugin to your code. It will look like this: 
+htmlmin: {
+            dist: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                    // White space will be deleted
+                },
+                // First, the code will be minified, and then it will be replaced
+                files: {'prebuild/index.html': 'src/index.html'
+                }
+            }
+        }
+I) Than type: npm run grunt htmlmin:dist
+
+d) You have to change a lot of thins in replace part:
+replace: {
+            dist: { / here
+                options: {
+                    patterns: [
+                        {
+                            match: 'css_adress',
+                            replacement: './styles/main.min.css' // here
+                        }
+                    ]
+                },
+                files: [
+                    {
+                    expand: true,
+                    flatten: true,
+                    src: ['prebuild/index.html'], // here
+                    dest: 'dist/' // here
+                    }
+                ]
+            }, // here ,
+        },
+
+e) Add the new items to register.Task, It will look like this: 
+grunt.registerTask('build', ['less:production' , 'htmlmin:dist', 'replace:dist']);
+I) Run: npm run grunt build
+
+8) Install grunt-contrib-clean: npm install --save-dev grunt-contrib-clean
+I) Call it to our code:  grunt.loadNpmTasks('grunt-contrib-clean')
+
+II) Add the new plugin to your file, it will look like this:
+clean: [
+            'prebuild'
+        ]
+
+III) Add the task to the tasks array // If you execute this task it will delete the prebuild folder
+
+IV) Add the HTML watcher to your file. 
+// In the watch section
+html: {
+                files: ['src/index.html'],
+                tasks: ['replace:dev']
+            }
+
+V) Type: npm run grunt 
+
+9) Creating the js file
+a) Add this to the 'replace' part of your gruntfile.js code: // It's under the existing one.
+{
+                            match: 'js_adress',
+                            replacement: '../src/scripts/main.js'
+                        }
+
+b) Add to your index.html file this:
+<script src="@@js_adress" ></script>

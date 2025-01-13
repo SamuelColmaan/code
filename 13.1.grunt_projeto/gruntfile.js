@@ -24,6 +24,74 @@ module.exports = function(grunt) {
                 }
             }
         },
+        watch: {
+            less: {
+                files: ['src/styles/**/*.less'],
+                tasks: ['less:development']
+            },
+            html: {
+                files: ['src/index.html'],
+                tasks: ['replace:dev']
+            }
+        },
+        replace: {
+            dist: {
+                options: {
+                    patterns: [
+                        {
+                            match: 'css_adress',
+                            replacement: './styles/main.min.css'
+                        }
+                    ]
+                },
+                files: [
+                    {
+                    expand: true,
+                    flatten: true,
+                    src: ['prebuild/index.html'],
+                    dest: 'dist/'
+                    }
+                ]
+            },
+            dev: {
+                options: {
+                    patterns: [
+                        {
+                            match: 'css_adress',
+                            replacement: './styles/main.css'
+                        },
+                        {
+                            match: 'js_adress',
+                            replacement: '../src/scripts/main.js'
+                        }
+                    ]
+                },
+                files: [
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: ['src/index.html'], // Development source
+                        dest: 'dev/' // Development destination
+                    }
+                ]
+            }
+        },
+        htmlmin: {
+            dist: {
+                options: {
+                    removeComments: true,
+                    // God is reaaaaaal
+                    collapseWhitespace: true
+                    // White space will be deleted
+                },
+                // First, the code will be minified, and then it will be replaced
+                files: {'prebuild/index.html': 'src/index.html'
+                }
+            }
+        },
+        clean: [
+            'prebuild'
+        ]
 
        
 
@@ -31,8 +99,13 @@ module.exports = function(grunt) {
     })
 
     grunt.loadNpmTasks('grunt-contrib-less'); // Chama o plugin do less
+    grunt.loadNpmTasks('grunt-contrib-watch'); // It calls the grunt contrib watcher plugin
+    grunt.loadNpmTasks('grunt-replace'); // It calls the grunt-replace plugin
+    grunt.loadNpmTasks('grunt-contrib-htmlmin') // It calls the grunt-contrib HTML min
+    grunt.loadNpmTasks('grunt-contrib-clean') // It calls the grunt-contrib-clean
 
-    grunt.registerTask('default', ['less:development']);
-    grunt.registerTask('build', ['less:production']);
+
+    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('build', ['less:production' , 'htmlmin:dist', 'replace:dist', 'clean']);
 
 };
