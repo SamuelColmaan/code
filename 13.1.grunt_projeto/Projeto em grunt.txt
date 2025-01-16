@@ -158,3 +158,37 @@ a) Add this to the 'replace' part of your gruntfile.js code: // It's under the e
 
 b) Add to your index.html file this:
 <script src="@@js_adress" ></script>
+
+9) Minify JavaCript
+a) You have to install a new plugin: npm install --save-dev grunt-contrib-uglify
+
+b) Call it to yor code: grunt.loadNpmTasks('grunt-contrib-uglify')
+
+c) Add the new plugin to your file, it will look like this: 
+uglify: {
+                target: {
+                    files: {
+                        'dist/scripts/main.min.js': 'src/scripts/main.js'
+                    }
+                }
+            }
+
+Add the task to the tasks array //
+d) Add the new plugin to the register task
+
+// Replace part
+e) Add the new replacement in the production part. It will look like this: 
+{
+                            match: 'js_adress',
+                            replacement: './scripts/main.minjs'
+                        }
+
+10) Vercel
+1) To put this invercel you have to add your code to GitHub. Than import to vercel 
+
+2) In the build and output setting section you have to write this: 
+Build Command: npm run build
+Output Directory: dist
+
+
+

@@ -41,6 +41,10 @@ module.exports = function(grunt) {
                         {
                             match: 'css_adress',
                             replacement: './styles/main.min.css'
+                        },
+                        {
+                            match: 'js_adress',
+                            replacement: './scripts/main..minjs'
                         }
                     ]
                 },
@@ -89,9 +93,15 @@ module.exports = function(grunt) {
                 }
             }
         },
-        clean: [
-            'prebuild'
-        ]
+        clean: ['prebuild'],
+            uglify: {
+                target: {
+                    files: {
+                        'dist/scripts/main.min.js': 'src/scripts/main.js'
+                    }
+                }
+            }
+        
 
        
 
@@ -101,11 +111,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less'); // Chama o plugin do less
     grunt.loadNpmTasks('grunt-contrib-watch'); // It calls the grunt contrib watcher plugin
     grunt.loadNpmTasks('grunt-replace'); // It calls the grunt-replace plugin
-    grunt.loadNpmTasks('grunt-contrib-htmlmin') // It calls the grunt-contrib HTML min
-    grunt.loadNpmTasks('grunt-contrib-clean') // It calls the grunt-contrib-clean
+    grunt.loadNpmTasks('grunt-contrib-htmlmin'); // It calls the grunt-contrib HTML min
+    grunt.loadNpmTasks('grunt-contrib-clean'); // It calls the grunt-contrib-clean
+    grunt.loadNpmTasks('grunt-contrib-uglify'); // It calls thr grunt-contrib-uglify
 
 
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('build', ['less:production' , 'htmlmin:dist', 'replace:dist', 'clean']);
+    grunt.registerTask('build', ['less:production' , 'htmlmin:dist', 'replace:dist', 'clean', 'uglify']);
 
 };

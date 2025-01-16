@@ -101,7 +101,7 @@ production: {
                     'main.min.css': 'main.less' // min de minificado (Versão de produção)
                 }
             }
-II) Para rodar, digite: npm run grunt // Isso vai criar um um novo arqivo minificado
+II) Para rodar, digite: npm run grunt // Isso vai criar um um novo arquivo minificado
 Vai ficar assim: 
 production: {
                 options: {

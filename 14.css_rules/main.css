@@ -1,0 +1,22 @@
+.accordion {
+    border: 1px solid #000;
+}
+
+.accordion-header {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.accordion-content {
+    padding: 8px;
+    border-top: 1px solid #eee;
+    display: none
+}
+
+.accordion.is-open .accordion-content {
+    display: block
+}
+
+.form .form_submit_sending {
+    cursor: wait; /* It will turn a normal cursor into a loading cursor */ 
+}

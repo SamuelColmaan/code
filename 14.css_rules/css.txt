@@ -1,0 +1,40 @@
+1) There are three levels of specificity in CSS:
+
+* Important
+// We read from left to right, but a website processes CSS from right to left when applying styles.
+<footer> <-- <container> <-- <ul> <-- <li> <-- <a>
+
+a) CSS inline // Strong
+ 
+b) IDs and class // Half strong
+
+c) Tags // Weak
+
+// It's mathematical. 
+// Examples of Specificity Scores
+// div → 0-0-0-1
+// .button → 0-0-1-0
+// #header → 0-1-0-0
+// #header .button → 0-1-1-0
+// style="color: red;" (inline style) → 1-0-0-0
+
+d) Important
+// If you add: !Important to css code in a style it will be extra strong 
+// Exemple: button {
+    background-color: blue !important // this is a bad CSS practice
+}
+
+2) SMACSS
+
+a) base.css
+body, * (reset)
+
+b) layout.css
+container, header
+
+c) Module.css
+h1
+
+d) tema-a.css
+
+3) BEM (Block Element Modifier)
